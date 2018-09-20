@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="record" type="Object"
+                    description="store the sigle record of wrapper passed from RecentlyViewedRecordsCmp component" />
+    
+    <!-- iterating over number of header columns to create the columns for each record
+		 using RecentlyViewedRowCmp by passing field api name and actual record of the Object
+   -->
+    <aura:iteration items="{!v.record.lstHeaders}" var="header">
+        <c:RecentlyViewedRowCmp field="{!header.apiName}" recData="{!v.record.objData}" />
+    </aura:iteration>
+</aura:component>

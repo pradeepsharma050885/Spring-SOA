@@ -1,0 +1,42 @@
+<!--
+ * Name     :   RecentlyViewedRecordsCmp
+ * Desc     :   This class will used to get recently viewed records of any Object
+				from apex class : RecentlyViewedRecords	
+-->
+
+<aura:component controller="RecentlyViewedRecords">
+	<aura:attribute name="objectName" type="String" default="Account" 
+                    description="store the api name of object whoes recently viewed records to be disply" />
+    <aura:attribute name="fieldSet" type="String" default="testFldSet" 
+                    description="store the field set name to restrict the fields to be quried" />
+    <aura:attribute name="recDetails" type="List" 
+                    description="store the response returned from the server side" />
+    
+    <!-- call doInit on load of this component -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+    <!-- Table to show records -->
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <!-- iterating over the header list to show the the header labels fro table -->
+                <aura:iteration items="{!v.recDetails[0].lstHeaders}" var="header">
+                    <th class="slds-text-title_caps" scope="col">
+                        <div class="slds-truncate" title="Opportunity Name">{!header.fieldLabel}</div>
+                    </th>
+                </aura:iteration>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- iterating over the total number of records returned by apex 
+				 calling child component and passing the one record from list 
+				 to create a new for tabvle data
+			-->
+            <aura:iteration items="{!v.recDetails}" var="rec">
+                <tr class="slds-hint-parent">
+                    <c:RecentlyViewedDetailCmp record="{!rec}" />
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+</aura:component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ContactCountTriggerHelper</members>
+        <members>RecentlyViewedRecords</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>ContactCount</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>RecentlyViewedDetailCmp</members>
+        <members>RecentlyViewedRecordsApp</members>
+        <members>RecentlyViewedRecordsCmp</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <version>36.0</version>
+</Package>
